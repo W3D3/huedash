@@ -1,4 +1,6 @@
-let huejay = require('huejay');
+"use strict";
+
+var huejay = require('huejay');
 
 console.log('Discovering bridges...');
 
@@ -9,23 +11,20 @@ huejay.discover()
       return;
     }
 
-    let onlybridge;
+    var onlybridge;
 
-    for (let bridge of bridges) {
+    for (var bridge of bridges) {
       console.log(`- Id: ${bridge.id}, IP: ${bridge.ip}`);
-
         onlybridge = bridge;
-
-
     }
 
-    let client = new huejay.Client({
+    var client = new huejay.Client({
       host: onlybridge.ip,
       port: 80, // Optional
       timeout: 15000 // Optional, timeout in milliseconds (15000 is the default)
     });
 
-    let user = new client.users.User;
+    var user = new client.users.User;
 
     // Optionally configure a device type / agent on the user
     user.deviceType = 'my_device_type'; // Default is 'huejay'
